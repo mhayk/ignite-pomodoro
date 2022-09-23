@@ -45,22 +45,22 @@ export function Home() {
     );
   }
 
-  function handleCreateNewCycle(data: NewCycleFormData) {
-    const id = String(new Date().getTime());
+  // function handleCreateNewCycle(data: NewCycleFormData) {
+  //   const id = String(new Date().getTime());
 
-    const newCycle: Cycle = {
-      id,
-      task: data.task,
-      minutesAmount: data.minutesAmount,
-      startDate: new Date(),
-    };
+  //   const newCycle: Cycle = {
+  //     id,
+  //     task: data.task,
+  //     minutesAmount: data.minutesAmount,
+  //     startDate: new Date(),
+  //   };
 
-    setCycles((state) => [...state, newCycle]);
-    setActiveCycleId(id);
-    setAmountSecondsPassed(0);
+  //   setCycles((state) => [...state, newCycle]);
+  //   setActiveCycleId(id);
+  //   setAmountSecondsPassed(0);
 
-    reset();
-  }
+  //   reset();
+  // }
 
   function handleInterruptCycle() {
     setCycles((state) =>
@@ -76,28 +76,16 @@ export function Home() {
     setActiveCycleId(null);
   }
 
-  const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassed : 0;
-
-  const minutesAmount = Math.floor(currentSeconds / 60);
-  const secondsAmount = currentSeconds % 60;
-
-  const minutes = String(minutesAmount).padStart(2, "0");
-  const seconds = String(secondsAmount).padStart(2, "0");
-
-  useEffect(() => {
-    if (activeCycle) document.title = `${minutes}:${seconds}`;
-  }, [minutes, seconds, activeCycle]);
-
-  const task = watch("task");
-  const isSubmitDisabled = !task;
+  // const task = watch("task");
+  // const isSubmitDisabled = !task;
 
   return (
     <HomeContainer>
-      <form onSubmit={handleSubmit(handleCreateNewCycle)} action="">
+      <form /* onSubmit={handleSubmit(handleCreateNewCycle)} */ action="">
         <CyclesContext.Provider
           value={{ activeCycle, activeCycleId, markCurrentCycleAsFinished }}
         >
-          <NewCycleForm />
+          {/* <NewCycleForm /> */}
 
           <Countdown
           // activeCycle={activeCycle}
@@ -112,7 +100,7 @@ export function Home() {
             Stop
           </StopCountDownButton>
         ) : (
-          <StartCountDownButton disabled={isSubmitDisabled} type="submit">
+          <StartCountDownButton /* disabled={isSubmitDisabled} */ type="submit">
             <Play size={24} />
             Start
           </StartCountDownButton>
