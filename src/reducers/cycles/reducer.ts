@@ -52,7 +52,7 @@ export function cyclesReducer(state: CyclesState, action: any) {
         draft.cycles[currentCycleIndex].interruptedDate = new Date();
       });
     }
-    case action.MARK_CURRENT_CYCLE_AS_FINISHED: {
+    case ActionTypes.MARK_CURRENT_CYCLE_AS_FINISHED: {
       // return {
       //   ...state,
       //   cycles: state.cycles.map((cycle) => {
